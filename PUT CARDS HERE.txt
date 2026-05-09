@@ -1,21 +1,120 @@
-Put your inventory here (one card per line), then import it from the site:
-
-  Admin panel → Stock document (inventory file) → paste this file or choose it with the file picker → Import stock document.
-
-Format examples
----------------
-Section headers (own line). Plain lines use the current section (starts as MONEY_BASE unless you set PLUXO_DOCUMENT_DEFAULT_BASE):
-
-  REY_BASE
-  4111111111111111|12/26|123|Name|Street|City|State|90210|US|5551234567
-
-Inline base + spaces/tabs + card:
-
-  MONEY_BASE	4111111111111111|12/26|123|Name|Street|City|State|90210|US|5551234567
-
-Optional price line at the top (if you don’t set price in the form):
-
-  PRICE 12.50
-
-After import, the server keeps a copy at: data\shop_stock.txt
-Each sale removes the matching line from that file.
+PRICE 7.00
+4430450019788255|02/28|433|Javier nino|7030 apple valley dr||San Antonio|Texas|US|2104245183|Ninojavier45@yahoo.com
+4000223344444971|03/29|791|Lourdes J Rivera|2060 Shaggy Fisher Dr||Apopka|Fl|US|3216629304|mjgvlogistics@gmail.com
+4388540108604298|02/30|164|Timothy Schrier|9007 Woodhill Dr||Savage|MN|US|9524840244|tim767pilot@gmail.com
+4347690278107059|12/30|531|jaylen adonis|2511 luther rd||punta gorda|charlotte|US|8634446733|jaylenadonis43@gmail.com
+4347697073230952|09/29|816|Anthony Simpson|4877 Dickinson Dr||SAN JOSE|CA|US|14086400855|Anthonysimpson4k@hotmail.com
+4000223625226576|03/30|303|Angel Toro|3340 Thornbrigde Drive||Powder Springs q|GA|US|=+19195799316|mr.angeltoro@icloud.com
+4117700163695858|04/30|224|Visa|38 Exchange Ave||Medford|MA|US|7815269442|belizaireashley57@gmail.com
+4223240005262055|07/28|470|Erica Ferguson|3300 SW Pebble Street||Bentonville|Benton|US|(479) 341-0417|ericaferguson05@yahoo.com
+4000223629812769|03/30|937|Kristofer Lee|30040 Rancho California Rd #131||Temecula|CA|US|13235740684|klee90003@gmail.com
+4266841856155906|01/30|630|Marcos Lara|340 Neville Dr, apt5||Grayslake|IL|US|=+12244229364|laramarcos71@gmail.com
+4347697120018947|12/29|435|Leon Smith|4128 Parker Ave apt A||Bakersfield|California|US|6616362439|Leonsmith5151@gmail.com
+4347695530741777|10/29|452|Derrald K Moore Jr|2012 Madeline Street||Alexandria|LA|US|3183083211|dkmoe24@gmail.com
+4430450024876954|02/27|436|Alexis Romero|40 N Union St||Elgin|St|US|8477661071|
+4358370032432251|02/28|885|Gage Grother|23 holiday lodge rd||North liberty|Iowa|US|=+13194407097|gagegrother@gmail.com
+4020180115588251|10/27|749|Abdulkadir Abdi|3632 w Broadway||Louisville|Kentucky|US|8164055732|abdiabdikadir112@gmail.com
+4347690541445484|12/30|366|Nery j Escalante Callejas|9735 E 191st St||Noblesville|Indiana|US|3178271983|neryescalante15@icloud.com
+4000223507447472|10/29|303|Frank Holliday|11767 , Perkins Rd||Norwood|La|US|2253059970|hollidayfrank@gmail.com
+4347697126575197|08/30|823|Yoana Nieto Jiménez|1117 N Larimore Ave||La Puente|CA|US|3232399222|carocel080724@icloud.com
+4000223117073916|06/28|028|Christopher|9832 maple leaf dr||Montgomery village|Montgomery county|US|2404765038|christopherbennett600@gmail.com
+4100400214408158|02/28|208|John marfia|47 Pine Mountain Rd.||Redding|Connecticut|US|9142627952|Johnmarfia@optonline.net
+4430440088598552|06/28|016|Ronald Quintanilla|3815 W136th street||Cleveland|OH|US|12166826988|quintanilla_ronald@yahoo.com
+5146160164932408|11/28|987|Marvin|4242 towanda ave||Baltimore|Maryland|US|=+14104196830|marvdaboss@yahoo.com
+4000223599818796|02/30|703|Jakobi Fuller|145 Harden Street||Hill Hill|SC|US|8039710755|kobi47@yahoo.com
+5178059366884972|03/29|324|Kim D Wooten|2997 Overbrook Cove||Memphis|TN|US|9016496427|aeo91886@gmail.com
+4000223608983607|02/30|300|Jakobe Bryant|11415 Estufa Canyon||San Antonio|TX|US|2107480973|jakobebryant98@gmail.com
+4347697123721729|04/30|510|Gary Gorman|1601 south Sandhill Road||Las Vegas|Navada|US|7024068316|Vikingwolfpack @yahoo.com
+4000223341452134|03/29|259|Nakara Nailor|4410 Blunt Rd, Blunt Rd||Baton Rouge|LA|US|2253169952|Kara44nailr@gmail.com
+4000223406767582|06/29|230|Stonewall J Wright|4818 Emo Street||Capitol Heights|Maryland|US|2022869509|jackstone48@icloud.com
+4347691126703552|11/28|319|Mario Rodriguez|853 Park Bluff Cir||Elgin|IL|US|3317719932|mariomtz1657@gmail.com
+4000223493426951|10/29|917|Amber brooks|550 bilper ave apt 4812||Lindenwold|Nj|US|8564738372|Djones9610@gmail.com
+4000222748740257|02/27|336|David J Washington|8305 Hermitage Drive||Chalmette|LA|US|15043299055|esqladespr07@gmail.com
+4430480073783587|09/27|988|Naim Mckitthen|4512 Old York Rd||Philadelphia|PA|US|2157204645|Nmckitthen@yahoo.com
+4430420085278390|04/26|538|Sarah Cloninger|6805 Hensch Ave Ne||Albuquerque|NM|US|5053799632|bluereefgirl@gmail.com
+4000223453686263|08/29|561|Katie Moss|178 Center Pointe Dr||Clarksville|TN|US|9318011900|katiemariemoss9@gmail.com
+4147099085120325|12/29|454|Anngy Moncaleano|1175 Twin Rivera Blvd||Oviedo|Florida|US|4073597306|akm8253@bellsouth.net
+5212678509107716|02/30|864|Aj Bogan|5600 Mulberry Dr||West Richland|WA|US|5098208142|ajbogan2008@gmail.com
+4294138012211525|12/27|398|Sally Ferrell|132 Greendale Road||Johnson City|Tennessee|US|15809161610|sally.pickens98@yahoo.com
+4347690540418334|03/30|853|Karline|3349 NW 34th St Lauderdale Lakes FL 33309 United States||3349 NW 34th St Lauderdale Lakes FL 33309 United States|3349 NW 34th St Lauderdale Lakes FL 33309 United States|US|7869605461|etiennekarline308@gmail.com
+4266841445616830|12/27|489|Thor vang|12954 E 34th St||Tulsa|Ok|US|9182649360|nkaoly@gmail.com
+4355463705976671|07/27|693|Michael Mitchell|104 Dove Hollow Road||Tullahoma|TN|US|9315816136|mchlmtchll@live.com
+4147400412515635|11/28|958|Carlos hergueta|23481 Southwest 127th Place||Miami|FL|US|=+1 (305) 492-9757|carlosjherguetap@hotmail.com
+5220940204552236|07/30|222|EEWUSE HAMMETT|266 Flathead Avenue||Fort Belknap|Montana|US|=+14063535683|funnyyes0507@gmail.com
+4388648264197377|04/28|807|Robert E. Smith|69 West Rocks Rd||Norwalk|Fairgield|US|=+1 (203) 822-8029|srvgn@aol.com
+4430510097862130|10/26|807|Daniel McCabe|48 Pupek Rd||South Amboy|NJ|US|7324027119|danmccabe2@gmail.com
+4000223064506397|03/28|307|Gabriel Varela Jr|370 K St, Apt 74||Chula Vista|CA|US|6196362584|varela.gabriel.jr664@gmail.com
+4000223409489572|06/29|314|Chriss Sibrian|1710 Golf Rd Apt,226||Waukegan|IL|US|2245878963|chrisssibrian5@gmail.com
+4020180121300741|02/28|667|Kamiria magee|16830 Bonham Ave||Baton Rouge|Louisiana|US|2254360455|kamirialmager@icloud.com
+4430473073214778|05/28|997|Nisha Thomas|1514 N Decker Ave||Baltimore|Maryland|US|4437997288|thomasnisha1205@gmail.com
+4000223095490058|05/28|696|Tehran Carter|914 N Austin Blvd||Oak park|Il|US|3127783910|Tehran11carter@gmail.com
+4535060313793663|04/29|275|Grayson Blount|543 Sagewood place SW||Concord|North Carolina|US|7046072024|gablount2003@gmail.com
+4347695931313986|02/30|432|Customer|||||US||
+4472270090279209|11/29|148|Victoria Kling|2949 Old Bartow Rd||Lake Wales|FL|US|8632649586|mrs.kling2588@gmail.com
+4342582037684863|07/29|914|Amber Smith|3030 nipsic Ave ne||Bremerton|Washington|US|(360) 551-3672|amberjohnson22@hotmail.com
+4347691214325201|04/30|248|AVA JEAN MARTIN|1839 N 48th St||Milwaukee|WI|US|5743401077|avajmartin@icloud.com
+4347697126000253|07/30|109|Mohamed Shamsan Alkhubari|910 66th Ave||Oakland|CA|US|5108710007|mohamed.alkhubari1@gmail.com
+5178059905073046|05/27|504|Alexandria Landon|18647 Ave Capri||Lutz|Fl|US|8137849854|alexandrialandon@gmail.com
+4430473026338203|02/27|200|Brain holloway|13401 fitzbonud Road||Princess Anne|Maryland|US|4433653013|Bjholloway308@gmail.com
+4266841742135260|11/27|681|Alexandra B Bacani|5144 East Agave Vista Drive||Tucson|Arizona|US|5202411945|bacanialexandra25@gmail.com
+4430400037165283|01/29|172|Maria Ohlson|10913 Pine Acres Rd, Jacksonville FL 32257||U|FL|US|=+13863388694|CristinaOhson1964@gmail.com
+4347690346702758|02/31|080|aliciana|192 needham dr||smyrna|delaware|US|3022566627|ahayward2006@icloud.com
+4000223591386388|02/30|486|Jalen Hartman|105 Highland View Point||Fayetteville|GA|US|6789209593|jay.hart147@gmail.com
+5275150327878427|01/30|346|Debit|2530 yorktown st||Houston|Tx|US|=+13467193383|simajf322@gmail.com
+4207670320200994|11/29|161|ALMA DELIA VARGAS LUNA|2812 Kent Pl||Hillsborough|NJ|US|9085028683|almii_tha_26-02@hotmail.com
+5524650091194058|06/26|245|Loreta Thibodeaux|4845 Bellerive Ln||Lake Charles|LA|US|5044950944|sage.middleton@gmail.com
+5178058610818851|01/30|998|Fnu pema Dolma|4133 68th st Apt 2||Woodside|Us|US|+19297207089|Jig_thups@yahoo.com
+4946389995797616|06/28|131|Aser salem|4043 Camelot Way||Tallahassee|FL|US|(448) 243-0098|tchameus78@gmail.com
+4316580031312137|06/27|799|Maria Christine Pana|397 Mule Academy Rd, Fishersville VA 22939, United States||Fishersville|VA|US|=+14709844230|panamariachristine@gmail.com
+5178058724058865|07/30|785|Lesvia Vásquez|850 N PLEASANT HILL BLVD APT 1||Pleasent Hill|Iowa|US|=+1 (515) 559-6506|cesarduron2427@gamil.com
+4020180130485640|02/29|610|Travis parker|3520 , Birchwood Dr||Hazel crest|Illinois|US|7086640099|Travisp050@gmail.com
+4293770047898214|12/28|326|Stacy philogene|6011 Hollow Drive||Naples|Fl|US|2393319187|Maple2009879@gmail.com
+4358667000235511|03/30|319|Michael Phelps|8424 Margaret Street||Taylor|MI|US|5662376379|donnahalabewy@yahoo.com
+4000223480157163|09/29|118|Neknitta Simmons|560 Freedom Court||Marrero|Louisiana|US|=+15042389913|neknittasimmons5@gmail.com
+4347691214012684|06/29|807|Staber Burr|801 S Overland Road Hobart, WI||Hobart|Wisconsin|US|9208880157|staber8400@gmail.com
+4342574056376794|03/30|910|Elsa-Lill G-Shires|200 Brittany St||Mount Vernon|WA|US|(360) 503-9556|gaigerkr@gmail.com
+4466146104981139|12/29|118|Marcos Palacios|12805 Greenland Blvd||Tyler|TX|US|9033166374|marcospala77@icloud.com
+4347697096539652|07/27|852|Shagen Ambartsumian|1606 Bel Aire Dr||Glendale|Ca|US|8186250450|Lifefortravels@gmail.com
+5178057516871113|10/28|940|Joanne Wolfe|46 Long Road||Freehold|New Jersey|US|9087703277|yump56@yahoo.com
+4000223129016416|06/28|786|Zachary A Williams|3009 Main Street||Little Rock|AR|US|5012980902|aspec1917@gmail.com
+4020180129269294|12/28|743|Nyezaiah owens|1954 Stratford ave apt 1||Neptune|NJ|US|6098456508|Nyeowe1703@gmail.com
+4815820937927711|06/30|026|Timothy j Frazier|30673 San Antonio dr||Cathedral city|CA|US|9514092875|hilljay881@icloud.com
+4100640215525290|03/29|558|Brian Pence|423 Marginella Lane||Indialantic|Florida|US|(321) 432-2999|Brianpence80@yahoo.com
+4060955372915730|06/28|336|FODAY KAMARA|9300 DeWitt Loop, #58||Fort belvoir|VA|US|=+1 (580) 919-4828|foday.bkamara0@gmail.com
+4000223621910314|03/30|135|Sunni Pouncil|12121 NW 7th St||Yukon|OK|US|14052014241|SUNNIPOUNCIL2@GMAIL.COM
+4194997007762326|07/27|958|Asiyah L Mann|6650 W Barnard Ave apt 105||Milwaukee|Wi|US|4143359558|nightshade4311@aol.com
+4737031028112313|12/29|031|James Krauss|2 Stevens Rd, Glen Burnie MD 21060||Glen Burnie|Maryland|US|(301) 252-1701|jpkrauss4@gmail.com
+5187258096383391|03/31|140|Megan E Donohue|3007 Birchview Walk||Philadelphia|PA|US|=+5164170564|megandonohue94@gmail.com
+5121079825578419|05/30|564|Vicky Scott|494 Paddock Ave||Meriden|CT|US|12034437183|vics494@outlook.com
+4388576200969080|06/30|248|Nikunj agarwal|4 Sarah court||Deer park|New york|US|=+13476564080|Hello@consciouscreations.co
+4494490007293408|04/28|589|Bryce Alan Sallack|215 S Thompson Ln||Irwin|PA|US|8146615542|brycesallack@gmail.com
+4266841838377065|09/29|921|DANIEA C ROSS|10001 North 7th St Apt 240||Phoenix|Az|US|6024418925|drossmilanes@gmail.com
+4023470526535190|01/28|143|Kadin Tomsich|2855 w golden meadows drive||Riverton|Utah|US|=+13855058939|kadin_tomsich@icloud.com
+4081044082175896|03/29|957|Marco M leyva|5720 N 70th Ave||Glendale|AZ|US|4803358062|mleyva097@gmail.com
+5243663068099770|03/30|293|Moklesur chowdhury|4019 Lincoln street||Hollywood|Florida|US|=+13055043515|chowdhurymoklesur@gmail.com
+4744880063467300|01/31|642|Cecelia Pedrego|310 Mesa Dr||Bagdad|Yavapai|US|9288992080|ceceliarpedrego@yahoo.com
+4347695939639812|10/29|575|Jayree Smith|5151 Nth 16th street||Phoenix|Maricopa|US|2068333949|sjayree@yahoo.com
+5474900028283403|12/28|032|Abdimajid abdi|900 14th ave ne||Minneapolis|MN|US|3203304272|Misskmeyer13@gmail.com
+5275200026509904|12/27|447|Irene Martinez|2423 Grape , Garpe St||Joliet|ILL|US|7793745151|ulisesbuddy123@gmail.com
+4347698061905308|03/30|872|Steve herbert|22803 shri oaks lane||Spring|Texas|US|2816791226|Chevytahoesteve@gmail.com
+4164900109980008|09/29|497|Terrence Goodlow|7425 Rosa parks blvd||Detroit|Michigan|US|7344932259|terrenceg19@icloud.com
+4039953122690339|12/27|153|Beverly willis|707 SE Loop 410||San Antonio|Tx|US|2109555983|Willisbev7@gmail.com
+4000223417095155|06/29|003|Valerie Ransom|485 Gramatan Ave. Apt. 1-P||Mount Vernon|New York|US|7027684445|vransom52@gmail.com
+4020180130655820|03/29|169|Kieralee Elliott|4550 Ledonne drive||Sacramento|Ca|US|2792419065|kieralee0054@gmail.com
+4000223389054552|05/29|033|Garion Martsch|82 offutt road||Hanscom|Massachusetts|US|2089192612|Martsch.felicia@yahoo.com
+5156769459972130|03/27|076|Eric Davis|3752 Juniper Dr, Angels Camp CA 95222||Angels Camp|CA|US|=+19072517257|ericwcdavis@gmail.com
+4347691129679551|02/30|873|Ricardo P?閵夌粯鐏恴 Solis|7430 W 61st ST||Summit Argo|Illinois|US|7082687976|ricardoperez802@gmail.com
+4108370013413109|03/28|892|Quintez Harris|1312 McKenzie ave||Tuskegee|Alabama|US|3343009461|Quintezharris98@gmail.com
+4400666626668178|07/27|973|Casey cloud|57800, East 250 Rd, Afton OK 74331||Afton|OK|US|=+1 (918) 801-6311|cloudc1234@msn.com
+5456600484660456|01/35|865|Tika cox|1211 cooks lane||Baltimore|MD|US|=+14104192971|firstlady359@gmail.com
+5422175007419707|04/30|087|Alice Zamora|156 Clarke St||Bishop|CA|US|(805) 668-5827|navepyre@yahoo.com
+4413830083470776|08/28|710|Jovawn Love|193 Westwood Dr. Apt J9||Trenton|TN|US|7314204072|jovawn974@gmail.com
+4670100391124079|05/29|046|Daniel Guerra|301 seagull st||Zapata|Texas|US|9562654655|danny262g@gmail.com
+4737031022240490|06/26|337|Marquis miales|704 n Carey||Baltimore|Maryland|US|=+14439855475|miales7@gmail.com
+4147202590181432|02/28|427|Danielle Pisano|137 Woodcutters Lane||Staten Island|NY|US|9172428500|Danielle9094@gmail.com
+5178057887720550|06/30|909|Loren Wilson|3640 Mapleshade Ln||Plano|Texas|US|=+12149800205|bwz1953@gmail.com
+4000223090720483|05/28|115|Dawana Flowers|5701 Golden Drive||Killeen|TX|US|2544623193|wanaflowers@gmail.com
+4737031028391628|12/29|902|Ismael sanchez cruz|2509 mccomas ave||Dundalk|Md|US|=+14437042788|Isma.sanchez1992@icloud.com
+4000223230959751|11/28|555|John Pryor|1821 McGougan Rd||Fayetteville|NC|US|(910) 748-8961|Jhp1286@gmail.com
+5178059638270489|09/28|361|Jasmine Aguirre|3103 Azle ave Fort Worth||76106|Tx|US|9727049812|Jasmineaguirre817@gmail.com
+4000223611515487|03/30|697|William Elerson|200 Sabal Palm Lane, Apt 307||Chesapeake|VA|US|3368234550|williamelerson4@gmail.com
