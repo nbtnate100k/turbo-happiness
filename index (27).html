@@ -5267,14 +5267,6 @@
                                 </select>
                             </div>
                             <div class="filter-group">
-                                <label class="filter-label">Credit/Debit</label>
-                                <select class="filter-select">
-                                    <option>All</option>
-                                    <option>CREDIT</option>
-                                    <option>DEBIT</option>
-                                </select>
-                            </div>
-                            <div class="filter-group">
                                 <label class="filter-label">Base</label>
                                 <select id="pluxoFilterBaseSelect" class="filter-select">
                                     <option value="All">All</option>
@@ -5310,7 +5302,6 @@
                                 <th><input type="checkbox" id="selectAll" onchange="toggleSelectAll()"></th>
                                 <th>Bin</th>
                                 <th>Brand</th>
-                                <th>Type</th>
                                 <th>Country</th>
                                 <th>Name</th>
                                 <th>Address</th>
@@ -5716,10 +5707,6 @@
                             <input type="text" class="input-field" id="sellerProductBin" placeholder="BIN (e.g., 400022)" maxlength="20">
                             <input type="text" class="input-field" id="sellerProductBrand" placeholder="Brand (VISA, MASTERCARD, etc.)" maxlength="20">
                             <input type="number" class="input-field" id="sellerProductPrice" placeholder="Price (e.g., 12.00)" step="0.01" min="0" maxlength="10">
-                            <select class="input-field" id="sellerProductType">
-                                <option value="CREDIT">CREDIT</option>
-                                <option value="DEBIT">DEBIT</option>
-                            </select>
                             <button class="btn btn-admin" onclick="addSellerProduct()" style="background: #22c55e; width: 100%;">Add Product</button>
                         </div>
                     </div>
@@ -6289,13 +6276,32 @@
         window.showLogin = showLogin;
 
         // Bot API — must match pluxo_backend.py (local: python pluxo_backend.py → http://localhost:5000)
-        // www.pluxo.net must call the SAME server that runs the Telegram bot (shared state.json).
-        // RAILWAY_API_URL = full backend URL (only if the HTML is hosted elsewhere, e.g. static Pages).
-        // PLUXO_API_HOST = '' uses this site origin (correct when Railway serves Flask + HTML on pluxo.net).
+        // The site MUST call the SAME server that runs the Telegram bot (one state.json).
+        // If stock from Telegram never appears: set localStorage pluxo_api_base = 'https://YOUR.railway.app' (no slash at end)
+        // or fill meta pluxo-api-base / RAILWAY_API_URL below.
         var RAILWAY_API_URL = '';  // e.g. https://web-production-xxxx.up.railway.app
-        var PLUXO_API_HOST = '';  // was https://api.pluxo.net — empty = same origin as the page (fixes stock not syncing)
+        var PLUXO_API_HOST = '';  // empty on pluxo.net = same origin when Flask serves HTML + API
 
         var BOT_WEBHOOK_URL = (function () {
+            try {
+                var lsApi = (localStorage.getItem('pluxo_api_base') || '').trim().replace(/\/$/, '');
+                if (lsApi) return lsApi;
+            } catch (eLs) {}
+            var proto = window.location.protocol || '';
+            if (proto === 'file:') {
+                try {
+                    var metaFile = document.querySelector('meta[name="pluxo-api-base"]');
+                    var fromMetaFile = ((metaFile && metaFile.getAttribute('content')) || '').trim().replace(/\/$/, '');
+                    if (fromMetaFile) return fromMetaFile;
+                } catch (eF) {}
+                var rFile = (RAILWAY_API_URL || '').replace(/\/$/, '');
+                if (rFile) return rFile;
+                console.warn(
+                    '[Pluxo] Opened as file:// — API defaults to http://127.0.0.1:5000. ' +
+                    'For Telegram stock on the live shop, set localStorage pluxo_api_base to your Railway URL (F12 → Application → Local storage).'
+                );
+                return 'http://127.0.0.1:5000';
+            }
             var h = window.location.hostname || '';
             if (h === 'localhost' || h === '127.0.0.1') return 'http://localhost:5000';
             try {
@@ -7732,12 +7738,10 @@ const safePaymentMethod = sanitizeInput(req.paymentMethod || 'N/A');
             const binInput = document.getElementById('sellerProductBin');
             const brandInput = document.getElementById('sellerProductBrand');
             const priceInput = document.getElementById('sellerProductPrice');
-            const typeInput = document.getElementById('sellerProductType');
             
             const bin = sanitizeInput(binInput.value.trim());
             const brand = sanitizeInput(brandInput.value.trim().toUpperCase());
             const price = parseFloat(priceInput.value);
-            const type = typeInput.value;
             
             if (!bin || bin.length < 6) {
                 showAnimatedPopup('Error', 'Enter a valid BIN (6+ digits)', 'error');
@@ -7766,7 +7770,6 @@ const safePaymentMethod = sanitizeInput(req.paymentMethod || 'N/A');
                 id: 'SP' + Date.now() + Math.random().toString(36).substr(2, 9),
                 bin: bin,
                 brand: brand,
-                type: type,
                 price: price.toFixed(2),
                 base: 'MONEY_BASE',
                 seller: sellerUsername,
@@ -7789,7 +7792,6 @@ const safePaymentMethod = sanitizeInput(req.paymentMethod || 'N/A');
             binInput.value = '';
             brandInput.value = '';
             priceInput.value = '';
-            typeInput.value = 'CREDIT';
             
             renderSellerProducts();
             loadSellerProductsToShop();
@@ -7839,7 +7841,7 @@ const safePaymentMethod = sanitizeInput(req.paymentMethod || 'N/A');
                         return `
                             <div class="admin-item">
                                 <div>
-                                    <span class="name">BIN: ${safeBin} | ${safeBrand} | ${product.type} | $${safePrice}</span>
+                                    <span class="name">BIN: ${safeBin} | ${safeBrand} | $${safePrice}</span>
                                     <span class="role"><span class="admin-badge-sm" style="background: #22c55e;">LISTED</span></span>
                                 </div>
                                 <button class="btn-revoke" onclick="${safeOnClick}">Remove</button>
@@ -8206,7 +8208,6 @@ const requestRef = doc(firestoreDb, 'balanceRequests', requestId);
                 id: generateSecureId(),
                 bin: bin,
                 brand: brand.toUpperCase(),
-                type: 'CREDIT', // Default type
                 country: { flag: '🇺🇸', flagClass: 'fi-us', code: 'US', name: 'USA' }, // Default country
                 hasName: true,
                 hasAddress: true,
@@ -10609,7 +10610,6 @@ const requestRef = doc(firestoreDb, 'balanceRequests', requestId);
         ];
 
         const brands = ['VISA', 'MASTERCARD', 'AMEX'];
-        const types = ['DEBIT', 'CREDIT'];
         // Function to determine brand from BIN prefix
         function getBrandFromBin(bin) {
             const binStr = String(bin);
@@ -10628,9 +10628,19 @@ const requestRef = doc(firestoreDb, 'balanceRequests', requestId);
             // Load products from bot API (Railway)
             apiProductsLoaded = false;
             try {
-                const response = await fetch(BOT_WEBHOOK_URL + '/api/products');
+                const response = await fetch(
+                    BOT_WEBHOOK_URL + '/api/products?_=' + Date.now(),
+                    { cache: 'no-store' }
+                );
                 if (!response.ok) {
                     console.warn('[products] /api/products HTTP', response.status, 'from', BOT_WEBHOOK_URL);
+                    if (response.status === 0 || response.status >= 400) {
+                        console.warn(
+                            '[products] Telegram /stock uses this same API. If the shop is empty but the bot has stock, ' +
+                            'point BOT_WEBHOOK_URL at your Railway app: meta pluxo-api-base, RAILWAY_API_URL in this HTML, ' +
+                            'or localStorage.setItem("pluxo_api_base","https://yours.up.railway.app")'
+                        );
+                    }
                 }
                 if (response.ok) {
                     const shopProducts = await response.json();
@@ -10639,7 +10649,6 @@ const requestRef = doc(firestoreDb, 'balanceRequests', requestId);
                             id: p.id || (index + 1),
                             bin: p.bin,
                             brand: p.brand || getBrandFromBin(p.bin),
-                            type: p.type || 'CREDIT',
                             country: p.country || { flag: '🇺🇸', flagClass: 'fi-us', code: 'US', name: 'USA' },
                             hasName: !!p.has_name,
                             hasAddress: !!p.has_address,
@@ -10674,7 +10683,6 @@ const requestRef = doc(firestoreDb, 'balanceRequests', requestId);
                             id: p.id || (index + 1),
                             bin: p.bin,
                             brand: p.brand || getBrandFromBin(p.bin),
-                            type: p.type || 'CREDIT',
                             country: p.country || { flag: '🇺🇸', flagClass: 'fi-us', code: 'US', name: 'USA' },
                             hasName: !!p.has_name,
                             hasAddress: !!p.has_address,
@@ -10726,7 +10734,6 @@ const requestRef = doc(firestoreDb, 'balanceRequests', requestId);
                     <td><input type="checkbox" class="product-check" data-id="${p.id}"></td>
                     <td>${maskedBin}</td>
                     <td>${p.brand}</td>
-                    <td>${p.type}</td>
                     <td>
                         <div class="country-cell">
                             <span class="fi ${p.country.flagClass} flag-icon"></span>
@@ -10933,9 +10940,8 @@ const requestRef = doc(firestoreDb, 'balanceRequests', requestId);
             const countrySelect = document.querySelector('.pluxo-filter-country')
                 || document.querySelectorAll('.filter-container .filter-select')[0];
             const brandSelect = document.querySelectorAll('.filter-select')[1];
-            const typeSelect = document.querySelectorAll('.filter-select')[2];
             const baseSelect = document.getElementById('pluxoFilterBaseSelect')
-                || document.querySelectorAll('.filter-container .filter-select')[3];
+                || document.querySelectorAll('.filter-container .filter-select')[2];
             const minPriceInput = document.querySelectorAll('.price-input')[0];
             const maxPriceInput = document.querySelectorAll('.price-input')[1];
             
@@ -10956,7 +10962,6 @@ const requestRef = doc(firestoreDb, 'balanceRequests', requestId);
             // Get select values
             const countryValue = countrySelect ? countrySelect.value : 'All';
             const brandValue = brandSelect ? brandSelect.value : 'All';
-            const typeValue = typeSelect ? typeSelect.value : 'All';
             const baseValue = baseSelect ? baseSelect.value : 'All';
             
             // Get price range
@@ -10986,11 +10991,6 @@ const requestRef = doc(firestoreDb, 'balanceRequests', requestId);
             // Filter by Brand
             if (brandValue && brandValue !== 'All') {
                 products = products.filter(p => p.brand === brandValue);
-            }
-            
-            // Filter by Type (Credit/Debit)
-            if (typeValue && typeValue !== 'All') {
-                products = products.filter(p => p.type === typeValue);
             }
             
             // Filter by Base
