@@ -1,9 +1,0 @@
-.env
-venv/
-__pycache__/
-*.pyc
-data/state.json
-data/telegram_poll.lock
-
-# Optional: keep empty data dir in git for fresh clones (volumes on Railway use same path)
-!data/.gitkeep
