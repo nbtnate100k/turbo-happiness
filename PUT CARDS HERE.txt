@@ -1,0 +1,21 @@
+Put your inventory here (one card per line), then import it from the site:
+
+  Admin panel → Stock document (inventory file) → paste this file or choose it with the file picker → Import stock document.
+
+Format examples
+---------------
+Section headers (own line). Plain lines use the current section (starts as MONEY_BASE unless you set PLUXO_DOCUMENT_DEFAULT_BASE):
+
+  REY_BASE
+  4111111111111111|12/26|123|Name|Street|City|State|90210|US|5551234567
+
+Inline base + spaces/tabs + card:
+
+  MONEY_BASE	4111111111111111|12/26|123|Name|Street|City|State|90210|US|5551234567
+
+Optional price line at the top (if you don’t set price in the form):
+
+  PRICE 12.50
+
+After import, the server keeps a copy at: data\shop_stock.txt
+Each sale removes the matching line from that file.
